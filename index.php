@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +31,7 @@
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="text" name="password" class="form-control" id="password" >
+            <input type="password" name="password" class="form-control" id="password" >
           </div>
           <div class="mb-1">
             <label  class="form-label">Select User Type :</label>
