@@ -1,58 +1,50 @@
-<?php
-    session_start();
-    if (!isset($_SESSION['username']) &&  !isset($_SESSION['id']))
-    { ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <title>Multi user login</title>
-    
+    <title>Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-form {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width:400px;
+        }
+        .form-group{
+            margin:10px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container d-flex justify-content-center align-items-center"
-    style="min-height:100vh">
-        <form class="border shadow p-3 rounded"
-        style="width:450px"
-        action="php/check-login.php"
-        method="POST"
-        >
-        <h1 class="text-center p-3">LOGIN</h1>
-        <?php if (isset($_GET['error'])) { ?>
-            <div class="alert alert-danger" role="alert">
-              <?=$_GET['error']?>
+<div class="login-form">
+        <h2 class="mb-4">Login</h2>
+        <form action="login.php" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
             </div>
-
-        <?php } ?>
-
-        
-        
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">User name</label>
-            <input type="text" name="username" class="form-control" id="username" >
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" id="password" >
-          </div>
-          <div class="mb-1">
-            <label  class="form-label">Select User Type :</label>
-          </div>
-          <select class="form-select mb-3" name="role" aria-label="Default select example">
-            
-            <option selected value="customer">Customer</option>
-            <option value="admin">Admin</option>
-            
-          </select>
-          
-          <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Select Role</label>
+                <select class="form-control" id="role" name="role" required>
+                    <option value="admin">Admin</option>
+                    <option value="customer1">Customer 1</option>
+                    <option value="customer2">Customer 2</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
         </form>
     </div>
 </body>
 </html>
-<?php }else{
-    header("Location: home.php");
-
-} ?>
